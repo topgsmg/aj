@@ -1,0 +1,214 @@
+1.........
+import java.util.ArrayList;
+import java.util.Collections;
+public class sample {
+public static void main(String[] args) { // Creating an ArrayList
+ArrayList<Integer> numbers = new ArrayList<Integer>(); // Adding elements to the ArrayList
+numbers.add(5);
+numbers.add(2);
+numbers.add(7);
+numbers.add(3);
+numbers.add(1);
+System.out.println("ArrayList after adding elements: " + numbers);
+numbers.remove(2); 
+System.out.println("ArrayList after removing element at index 2: " + numbers);
+Collections.sort(numbers);
+System.out.println("ArrayList after sorting: " + numbers);
+Integer[] numbersArray = numbers.toArray(new Integer[numbers.size()]);
+System.out.println("Array after converting from ArrayList: ");
+for (Integer num : numbersArray) {
+System.out.print(num + " ");
+}
+}
+}
+
+2........
+import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+class TensPlaceComparator implements Comparator<Integer> {
+public int compare(Integer num1, Integer num2) {
+int tensPlace1 = (num1 % 100) / 10;
+int tensPlace2 = (num2 % 100) / 10;
+return Integer.compare(tensPlace1, tensPlace2);
+}
+}
+public class RandomNumbersSort {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.print("Enter the lower bound of the range: ");
+int lowerBound = scanner.nextInt();
+System.out.print("Enter the upper bound of the range: ");
+int upperBound = scanner.nextInt();
+System.out.print("Enter the number of random numbers to generate: ");
+int count = scanner.nextInt();
+List<Integer> randomNumbers = generateRandomNumbers(lowerBound, upperBound, count);
+System.out.println(randomNumbers);
+Collections.sort(randomNumbers, new TensPlaceComparator());
+System.out.println("\nSorted Numbers According to Tens Place:");
+for (int num : randomNumbers) {
+System.out.println(num);
+}
+scanner.close();
+}
+private static List<Integer> generateRandomNumbers(int lowerBound, int upperBound, int count) {
+List<Integer> randomNumbers = new ArrayList<>();
+Random rand = new Random();
+int num;
+int i=0;
+while(i<count) {
+num = rand.nextInt(upperBound - lowerBound + 1) + lowerBound;
+if (num % 2 == 0 && num % 5 == 0) {
+randomNumbers.add(num);
+i++;
+}
+}
+return randomNumbers;
+}
+}
+
+3.......
+import java.util.ArrayList;
+import java.util.List;
+class Person {
+private String name;
+private int age;
+public Person(String name, int age) {
+this.name = name;
+this.age = age;
+}
+public String getName() {
+return name;
+}
+public int getAge() {
+return age;
+}
+@Override
+public String toString() {
+return "{" +
+"name='" + name + '\'' +
+", age=" + age +
+'}';
+}
+}
+public class Main {
+public static void main(String[] args) {
+// Create a list to store Person objects
+List<Person> personList = new ArrayList<>();
+personList.add(new Person("Alice", 30));
+personList.add(new Person("Bob", 25));
+personList.add(new Person("Charlie", 35));
+// Displaying the contents of the list
+System.out.println("List of Persons:");
+for (Person person : personList) {
+System.out.println(person);
+}
+}
+}
+
+4.......
+public class StringConstructor {
+public static void main(String[] args) {
+// Using String literal
+String str1 = "Hello, World!";
+// Using String constructor with char array
+char[] charArray = {'H', 'e', 'l', 'l', 'o'};
+String str2 = new String(charArray);
+// Using String constructor with byte array
+byte[] byteArray = {72, 101, 108, 108, 111};
+String str3 = new String(byteArray);
+// Using String constructor with another String
+String original = "Java";
+String str4 = new String(original);
+// Using String constructor with StringBuffer
+StringBuffer stringBuffer = new StringBuffer("Programming");
+String str5 = new String(stringBuffer);
+// Outputting the strings
+System.out.println("String 1: " + str1);
+System.out.println("String 2: " + str2);
+System.out.println("String 3: " + str3);
+System.out.println("String 4: " + str4);
+System.out.println("String 5: " + str5);
+}
+}
+
+5......
+public class StringMethod {
+public static void main(String[] args) {
+// Character extraction
+String str = "Hello, World!";
+char firstChar = str.charAt(0);
+char lastChar = str.charAt(str.length() - 1);
+String substring = str.substring(7, 12);
+System.out.println("Original String:" + str);
+System.out.println("Character extraction:");
+System.out.println("First character: " + firstChar);
+System.out.println("Last character: " + lastChar);
+System.out.println("Substring: " + substring);
+// String comparison
+String str1 = "apple";
+String str2 = "banana";
+int compareResult = str1.compareTo(str2);
+System.out.println("\nString comparison:");
+System.out.println("str1:" +str1+ " srt2:"+str2+ " Comparison of str1 and str2:" + compareResult);
+if (compareResult < 0) {
+System.out.println(str1 + " comes before " + str2);
+} else if (compareResult > 0) {
+System.out.println(str1 + " comes after " + str2);
+} else {
+System.out.println(str1 + " is equal to " + str2);
+}
+// String search
+String sentence = "The quick brown fox jumps over the lazy dog";
+boolean containsFox = sentence.contains("fox");
+int indexOfDog = sentence.indexOf("dog");
+System.out.println("\nString search:");
+System.out.println("Contains 'fox': " + containsFox);
+System.out.println("Index of 'dog': " + indexOfDog);
+// String modification
+String original = " Hello, World! ";
+String trimmed = original.trim();
+String replaced = original.replace("Hello", "Hi");
+String lowerCase = original.toLowerCase();
+String upperCase = original.toUpperCase();
+System.out.println("\nString modification:");
+System.out.println("Trimmed string: '" + trimmed + "'");
+System.out.println("Replaced string: '" + replaced + "'");
+System.out.println("Lowercase string: '" + lowerCase + "'");
+System.out.println("Uppercase string: '" + upperCase + "'");
+}
+}
+
+6........
+public static void main(String[] args) {
+// Creating a StringBuffer object
+StringBuffer stringb1 = new StringBuffer("Hello");
+System.out.println("Original String:"+stringb1);
+// Append method
+stringb1.append(" World!");
+System.out.println("After append:"+stringb1);
+// Insert method
+stringb1.insert(5, ", Java");
+System.out.println("After insert:"+stringb1);
+// Delete method
+stringb1.delete(5, 11);
+System.out.println("After delete:"+stringb1);
+// Reverse method
+stringb1.reverse();
+System.out.println("Reversed String:"+stringb1);
+// Replace method
+stringb1.replace(0, 5, "Hi");
+System.out.println("After replace:"+stringb1);
+// Set length method
+stringb1.setLength(7);
+System.out.println("String with modified length:"+stringb1);
+// Capacity method
+int capacity = stringb1.capacity();
+// Outputting the result
+System.out.println("Modified StringBuffer: " + stringb1);
+System.out.println("Capacity of StringBuffer: " + capacity);
+}
+}
